@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -57,9 +58,21 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.blueAccent,
               child: Stack(
                 children: <Widget>[
-                  Container(
+               /*   Container(
                     margin: EdgeInsets.only(top: 20, left: 10),
                     child: Text('DLD Project', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),)
+                    ),*/
+                    Container(
+                      margin: EdgeInsets.only(top: 20, left: 10),
+                      child: TypewriterAnimatedTextKit(
+                         speed: Duration(milliseconds: 500),
+                        totalRepeatCount: 1,
+                        text: ['DLD Project','BS Computer Science','Submitted to ','Mr.Zahid Hussain'],
+                         textStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25
+                          ),
+                      ),
                     ),
                     Container(
                     margin: EdgeInsets.only(top: 90, left: 10),
