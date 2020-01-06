@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:flutter_fluid_slider/flutter_fluid_slider.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -29,13 +30,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  double _value = 0;
   String status = "Stopped";
 
   @override
   Widget build(BuildContext context) {
    
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
+    /*  floatingActionButton: FloatingActionButton(
         child: Icon(Icons.stop),
          onPressed: (){
                            setState(() {
@@ -43,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
                            });
                          },
         elevation: 10,
-      ),
+      ),*/
       body: ListView(
 
         children: <Widget>[
@@ -170,14 +172,54 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          SizedBox(height: 40,),
+          SizedBox(height: 20,),
           Card(
             elevation: 5,
                       child: Container(
               margin: EdgeInsets.only(left: 20),
               child: Text('Status: $status', style: TextStyle(color: Colors.black54, fontSize: 22),)
               ),
-          )
+          ),
+          SizedBox(height: 10,),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CircleAvatar(
+                backgroundColor: Colors.blue,
+                child: Icon(Icons.flash_on, color: Colors.white,),
+                radius: 30,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: FluidSlider(
+                  
+                   value: _value,
+                  onChanged: (double newValue) {
+                    setState(() {
+                     _value = newValue;
+                     });
+                  },
+                min: 0.0,
+                max: 100.0,
+),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: FloatingActionButton(
+        child: Icon(Icons.stop),
+         onPressed: (){
+                             setState(() {
+                               status = "Stopped";
+                             });
+                           },
+        elevation: 10,
+      ),
+              )
+            ],
+          ),
         ],
       )
 
